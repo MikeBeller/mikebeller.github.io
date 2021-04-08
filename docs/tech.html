@@ -1,0 +1,93 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Interesting Tech - Beller.Tech</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    
+<!--==========================================-->
+<!-- Override "includes/head-extras.html.eex" -->
+<!-- to add more tags inside this <head> tag. -->
+<!--==========================================-->
+
+  </head>
+  <body>
+    <div id="wrapper">
+      <header id="top">
+<h1><a href="/">Beller.Tech</a></h1>
+<p>Mike Beller's personal web page</p>
+</header>
+      <nav>
+<!--=========================================================-->
+<!-- Override "includes/nav.html.eex"                        -->
+<!-- to customize the navigation area.                       -->
+<!--                                                         -->
+<!-- Example:                                                -->
+<!-- <ul>                                                    -->
+<!--   <%= for p <- @all_pages, p.group == "main-menu" do %> -->
+<!--     <li><a href="<%= p.url %>"><%= p.label %></a></li>  -->
+<!--   <% end %>                                             -->
+<!--   <li><a href="<%= base "posts" %>">Posts</a></li>      -->
+<!-- </ul>                                                   -->
+<!--=========================================================-->
+
+<ul>
+  
+    <li><a href="/index.html">Home</a></li>
+  
+    <li><a href="/tech.html">Tech</a></li>
+  
+  <li><a href="/posts">Posts</a></li>
+</ul>
+</nav>
+      <hr>
+      <main><article><div><h2 id="tech-i-find-interesting">Tech I Find Interesting</h2><ul><li>Lately I’ve been spending a lot of time with <a href="https://elixir-lang.org/">Elixir</a>, which is based on the Erlang virtual machine.  My work on High Frequency Trading in the 2000’s was influenced heavily by my study of <a href="https://erlang.org/">Erlang</a> at that time. While Erlang was simply way too slow to handle the microsecond level performance we needed (C/C++ was the only choice at the time), nonetheless the approach of using message-passing concurrency, which I learned to love from “Programming Erlang” by Joe Armstrong, was one important key to our success.
+</li><li>The <a href="https://www.rust-lang.org/">Rust programming language</a>.  Sometimes you need CPU performance.  Rust is the first language to achieve the performance of C / C++ without the attendant memory safety issues.  Adoption of Rust in systems programming (and embedded!) would have a major positive effect on information security. And it’s <a href="https://arstechnica.com/gadgets/2021/04/google-is-now-writing-low-level-android-code-in-rust/">starting to happen</a>.  By the way I’m not very good at writing Rust code.  Still fighting with the borrow checker.
+</li><li>Almost anything by <a href="https://bellard.org/">Fabrice Bellard</a>.  The TCC Tiny C Compiler, Qemu, Libbf, QuickJS.  He makes small things that are incredibly powerful.
+</li><li>Speaking of small things — the <a href="https://janet-lang.org/">Janet Programming Language</a> is a very small, embeddable lisp-like language originated by <a href="https://github.com/bakpakin">Calvin Rose</a>.
+</li><li><a href="https://arrow.apache.org/">Apache Arrow</a> —  <a href="https://wesmckinney.com/">Wes McKinney</a>, creator of <a href="https://pandas.pydata.org/">Pandas</a> is leading a project to create standard API’s for in-memory storage, transport, and processing of column-oriented data. Combine this with <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/intel-optane-technology.html">Optane</a> and I think you can begin to see the future.
+</li><li><a href="https://www.adafruit.com/">Adafruit</a>.  I’m becoming an Adafruit junky. The ecosystem for embedded computing is blowing open — and you can program a $5 microcontroller in <a href="https://circuitpython.org/">CircuitPython</a>.  I think the ease and low cost with which anyone with a small amount of programming experience can become a “maker” of cool automated real-world tech will lead to a revolution in embedded devices similar to the way Open Source caused a revolution in the 90’s-2000’s.  Someone tell <a href="https://en.wikipedia.org/wiki/Limor_Fried">Lady Ada</a> I am a big fan.
+</li></ul></div></article></main>
+      <hr>
+      <footer>
+        
+<!--=====================================-->
+<!-- Override "includes/footer.html.eex" -->
+<!-- to customize your footer contents.  -->
+<!--=====================================-->
+
+        <p>
+          Powered by <a href="https://github.com/Dalgona/Serum">Serum</a> v1.5.0,
+          with <a href="https://github.com/Dalgona/serum-theme-essence">Essence</a> theme
+        </p>
+      </footer>
+    </div>
+    <script src="/assets/js/prism.js"></script>
+  </body>
+</html>
+<script>
+const ws_url = "ws://" + location.host + "/serum_live_reloader";
+var ws;
+
+connect();
+
+function connect() {
+  ws = new WebSocket(ws_url);
+  ws.onmessage = onMessage;
+  ws.onclose = onClose;
+}
+
+function onMessage(e) {
+  if (e.data === "reload") {
+    location.reload();
+  }
+}
+
+function onClose(e) {
+  console.warn("WebSocket disconnected from server. Reconnecting in 10 seconds.");
+  setTimeout(connect, 10000)
+}
+</script>

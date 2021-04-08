@@ -1,0 +1,98 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Welcome - Beller.Tech</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    
+<!--==========================================-->
+<!-- Override "includes/head-extras.html.eex" -->
+<!-- to add more tags inside this <head> tag. -->
+<!--==========================================-->
+
+  </head>
+  <body>
+    <div id="wrapper">
+      <header id="top">
+<h1><a href="/">Beller.Tech</a></h1>
+<p>Mike Beller's personal web page</p>
+</header>
+      <nav>
+<!--=========================================================-->
+<!-- Override "includes/nav.html.eex"                        -->
+<!-- to customize the navigation area.                       -->
+<!--                                                         -->
+<!-- Example:                                                -->
+<!-- <ul>                                                    -->
+<!--   <%= for p <- @all_pages, p.group == "main-menu" do %> -->
+<!--     <li><a href="<%= p.url %>"><%= p.label %></a></li>  -->
+<!--   <% end %>                                             -->
+<!--   <li><a href="<%= base "posts" %>">Posts</a></li>      -->
+<!-- </ul>                                                   -->
+<!--=========================================================-->
+
+<ul>
+  
+    <li><a href="/index.html">Home</a></li>
+  
+    <li><a href="/tech.html">Tech</a></li>
+  
+  <li><a href="/posts">Posts</a></li>
+</ul>
+</nav>
+      <hr>
+      <main><article><div><p><img src="/media/mike_github_cropped_small.jpg" alt="me"/></p><h2 id="my-(tech)-interests">My (Tech) Interests</h2><ul><li>Low latency, highly scalable, high reliability systems
+</li><li>Information security
+</li><li>Innovative networks
+</li><li>Internet of Things
+</li></ul><h2 id="my-background">My Background</h2><ul><li>I am an engineer by training, and by outlook
+</li><li>I studied Electrical Engineering at Cornell University and then Columbia University in the 1980’s
+</li><li>I started my career as an engineer at Bell Communications Research, where I worked on communications protocols, mobile communications, and helped invent cryptographic protocols for securing mobile phones
+</li><li>I co-founded a mobile computing technology company in the mid 1990’s called PenVision
+</li><li>I spent most of the recent 20 years of my life working in Financial Technology and Financial services, a company called Tradeworx (and later Thesys), where I began as CTO and then ultimately became CEO.
+</li><li>At Tradeworx I architected, developed, and operated electronic trading systems that traded billions of dollars of stock trades per day, processing millions of messages per second, and responding to market events within microseconds.
+</li><li>I also architected hugely scalable big-data databases of financial data, including the MIDAS system which is used by the SEC to monitor the markets, and the original Consolidated Audit Trail system — systems which process &gt; 100 Billion messages per day, and require intense information security.
+</li></ul></div></article></main>
+      <hr>
+      <footer>
+        
+<!--=====================================-->
+<!-- Override "includes/footer.html.eex" -->
+<!-- to customize your footer contents.  -->
+<!--=====================================-->
+
+        <p>
+          Powered by <a href="https://github.com/Dalgona/Serum">Serum</a> v1.5.0,
+          with <a href="https://github.com/Dalgona/serum-theme-essence">Essence</a> theme
+        </p>
+      </footer>
+    </div>
+    <script src="/assets/js/prism.js"></script>
+  </body>
+</html>
+<script>
+const ws_url = "ws://" + location.host + "/serum_live_reloader";
+var ws;
+
+connect();
+
+function connect() {
+  ws = new WebSocket(ws_url);
+  ws.onmessage = onMessage;
+  ws.onclose = onClose;
+}
+
+function onMessage(e) {
+  if (e.data === "reload") {
+    location.reload();
+  }
+}
+
+function onClose(e) {
+  console.warn("WebSocket disconnected from server. Reconnecting in 10 seconds.");
+  setTimeout(connect, 10000)
+}
+</script>
