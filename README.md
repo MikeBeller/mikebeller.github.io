@@ -5,10 +5,11 @@ My github pages site
 
     mix serum.server
 
-Modify pages and posts, while watching on localhost:8080
+Modify pages/ and posts/, while watching on localhost:8080
 
-# To rebuild
+# To rebuild and publish
 
-mix serum.build -o docs/
+    mix serum.build -o docs/
+    git add docs/  # and any other modified files
+    git push
 
-Then just commit and push
